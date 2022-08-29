@@ -1,0 +1,17 @@
+weatherNYC_table_command_line 
+
+beeline -u jdbc:hive2://hm-1.hpc.nyu.edu:10000/ -n al7527
+use al7527;
+show tables;
+
+========== weather ==========
+
+create external table p1 (region string, ele string, time date, val string)
+row format delimited fields terminated by ','
+location '/user/al7527/hiveInput/';
+
+========== suntime ==========
+
+create external table suntime (time date, sunrise timestamp, sunset timestamp)
+row format delimited fields terminated by ','
+location '/user/al7527/hiveSun/';
